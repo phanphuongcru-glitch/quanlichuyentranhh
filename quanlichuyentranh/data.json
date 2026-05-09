@@ -1,0 +1,150 @@
+{
+  "books": [
+    {
+      "id": 1,
+      "title": "Doraemon - Tập 1",
+      "author": "Fujiko F. Fujio",
+      "genre": "Manga",
+      "price": 25000,
+      "rental_price": 5000,
+      "stock": 9,
+      "emoji": "📘"
+    },
+    {
+      "id": 2,
+      "title": "Conan - Tập 45",
+      "author": "Aoyama Gosho",
+      "genre": "Manga",
+      "price": 28000,
+      "rental_price": 6000,
+      "stock": 8,
+      "emoji": "🔍"
+    },
+    {
+      "id": 3,
+      "title": "Dragon Ball - Tập 10",
+      "author": "Toriyama Akira",
+      "genre": "Manga",
+      "price": 30000,
+      "rental_price": 5000,
+      "stock": 5,
+      "emoji": "🐉"
+    },
+    {
+      "id": 4,
+      "title": "Naruto - Tập 72",
+      "author": "Kishimoto Masashi",
+      "genre": "Manga",
+      "price": 32000,
+      "rental_price": 7000,
+      "stock": 3,
+      "emoji": "🍥"
+    },
+    {
+      "id": 5,
+      "title": "One Piece - Tập 100",
+      "author": "Oda Eiichiro",
+      "genre": "Manga",
+      "price": 35000,
+      "rental_price": 8000,
+      "stock": 10,
+      "emoji": "🏴‍☠️"
+    },
+    {
+      "id": 6,
+      "title": "Shin - Cậu bé bút chì",
+      "author": "Usui Yoshito",
+      "genre": "Manga",
+      "price": 22000,
+      "rental_price": 4000,
+      "stock": 15,
+      "emoji": "✏️"
+    },
+    {
+      "id": 7,
+      "title": "Tôi thấy hoa vàng trên cỏ xanh",
+      "author": "Nguyễn Nhật Ánh",
+      "genre": "Văn học VN",
+      "price": 68000,
+      "rental_price": 10000,
+      "stock": 6,
+      "emoji": "🌻"
+    },
+    {
+      "id": 8,
+      "title": "Mắt biếc",
+      "author": "Nguyễn Nhật Ánh",
+      "genre": "Văn học VN",
+      "price": 72000,
+      "rental_price": 12000,
+      "stock": 4,
+      "emoji": "👁️"
+    }
+  ],
+  "sales": [
+    {
+      "id": 1,
+      "book_id": 1,
+      "title": "Doraemon - Tập 1",
+      "qty": 1,
+      "price": 25000,
+      "total": 25000,
+      "customer": "Nguyễn Văn An",
+      "seller": "Quản trị viên",
+      "date": "08/05/2026 15:06"
+    },
+    {
+      "id": 2,
+      "book_id": 1,
+      "title": "Doraemon - Tập 1",
+      "qty": 1,
+      "price": 25000,
+      "total": 25000,
+      "customer": "chi",
+      "seller": "Quản trị viên",
+      "date": "08/05/2026 15:58"
+    }
+  ],
+  "rentals": [
+    {
+      "id": 1,
+      "book_id": 1,
+      "title": "Doraemon - Tập 1",
+      "customer": "Nguyễn Văn An",
+      "rate": 5000,
+      "days": 3,
+      "total": 15000,
+      "date": "09/05/2026 07:30",
+      "due": "12/05/2026",
+      "returned": false,
+      "return_date": null,
+      "staff": "Nhân viên A"
+    }
+  ],
+  "customers": [
+    {
+      "id": 1,
+      "name": "Nguyễn Văn An",
+      "phone": "0901234567",
+      "address": "Hoàn Kiếm, Hà Nội"
+    },
+    {
+      "id": 2,
+      "name": "Trần Thị Bình",
+      "phone": "0912345678",
+      "address": "Quận 1, HCM"
+    },
+    {
+      "id": 3,
+      "name": "Lê Minh Châu",
+      "phone": "0923456789",
+      "address": "Hải Châu, Đà Nẵng"
+    }
+  ],
+  "next_ids": {
+    "book": 9,
+    "sale": 3,
+    "rental": 2,
+    "customer": 4
+  }
+}

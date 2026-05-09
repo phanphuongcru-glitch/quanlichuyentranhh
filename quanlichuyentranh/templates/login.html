@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 Tiệm Truyện Cũ - {% if page == 'login' %}Đăng nhập{% else %}Đăng ký{% endif %}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #faf6f0; --bg2: #f5ede0; --card: #fffcf7;
+            --border: #e8dcc8; --text: #3d2c1e; --text2: #7a6652; --text3: #b09d86;
+            --brown: #8b5e3c; --brown-light: #d4a574;
+            --green: #3d7c47; --green-bg: #e8f5e9;
+            --red: #c0392b;
+            --radius: 12px;
+            --shadow: 0 2px 8px rgba(60,40,20,0.08);
+            --shadow-lg: 0 12px 40px rgba(60,40,20,0.15);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Quicksand', sans-serif; color: var(--text);
+            background: var(--bg);
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23d4c5b3' fill-opacity='0.12'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            min-height: 100vh; display: flex; align-items: center; justify-content: center;
+        }
+
+        .login-container {
+            width: 420px; max-width: 92vw;
+            animation: slideUp 0.5s ease;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Logo area */
+        .login-logo {
+            text-align: center; margin-bottom: 28px;
+        }
+        .login-logo-icon {
+            font-size: 56px; display: block; margin-bottom: 8px;
+            filter: drop-shadow(0 4px 8px rgba(139,94,60,0.2));
+        }
+        .login-logo-name {
+            font-family: 'Vollkorn', serif; font-size: 28px; font-weight: 800;
+            color: var(--brown); letter-spacing: -0.5px;
+        }
+        .login-logo-sub {
+            font-size: 13px; color: var(--text3); margin-top: 2px;
+            letter-spacing: 2px; text-transform: uppercase;
+        }
+
+        /* Card */
+        .login-card {
+            background: var(--card); border-radius: var(--radius);
+            padding: 32px; border: 1px solid var(--border);
+            border-top: 4px solid var(--brown);
+            box-shadow: var(--shadow-lg);
+        }
+        .login-title {
+            font-family: 'Vollkorn', serif; font-size: 20px; font-weight: 700;
+            text-align: center; margin-bottom: 24px; color: var(--text);
+        }
+
+        /* Flash messages */
+        .flash {
+            padding: 10px 16px; border-radius: 8px; margin-bottom: 16px;
+            font-size: 13px; font-weight: 600;
+        }
+        .flash.success { background: var(--green-bg); color: var(--green); border: 1px solid #a5d6a7; }
+        .flash.error { background: #fce4e4; color: var(--red); border: 1px solid #ef9a9a; }
+
+        /* Form */
+        .field { margin-bottom: 16px; }
+        .field-label {
+            display: block; font-size: 12px; font-weight: 700; color: var(--text2);
+            text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;
+        }
+        .input {
+            width: 100%; padding: 11px 14px; border: 1.5px solid var(--border);
+            border-radius: 8px; font-size: 14px; font-family: inherit;
+            color: var(--text); background: var(--bg); transition: all 0.15s;
+        }
+        .input:focus {
+            outline: none; border-color: var(--brown);
+            box-shadow: 0 0 0 3px rgba(139,94,60,0.12);
+        }
+        .input::placeholder { color: var(--text3); }
+
+        select.input {
+            appearance: none; cursor: pointer;
+            background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237a6652' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+            background-repeat: no-repeat; background-position: right 12px center;
+            padding-right: 36px;
+        }
+
+        .submit-btn {
+            width: 100%; padding: 12px; border: none; border-radius: 8px;
+            background: var(--brown); color: #fff; font-size: 15px;
+            font-weight: 700; font-family: inherit; cursor: pointer;
+            transition: all 0.2s; margin-top: 8px;
+        }
+        .submit-btn:hover {
+            background: #a0714e; transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(139,94,60,0.3);
+        }
+
+        .login-footer {
+            text-align: center; margin-top: 20px; font-size: 13px; color: var(--text3);
+        }
+        .login-footer a {
+            color: var(--brown); font-weight: 700; text-decoration: none;
+            border-bottom: 1px dashed var(--brown-light);
+        }
+        .login-footer a:hover { color: #a0714e; }
+
+        /* Default accounts hint */
+        .hint-box {
+            margin-top: 20px; padding: 14px 16px; border-radius: 8px;
+            background: var(--bg2); border: 1px dashed var(--border);
+            font-size: 12px; color: var(--text2);
+        }
+        .hint-box strong { color: var(--brown); }
+        .hint-box .hint-title {
+            font-weight: 700; margin-bottom: 6px; font-size: 11px;
+            text-transform: uppercase; letter-spacing: 0.5px; color: var(--text3);
+        }
+        .hint-row { display: flex; justify-content: space-between; padding: 3px 0; }
+
+        /* Role badges */
+        .role-row { display: flex; gap: 8px; }
+        .role-option {
+            flex: 1; padding: 10px; border: 1.5px solid var(--border);
+            border-radius: 8px; text-align: center; cursor: pointer;
+            transition: all 0.15s; background: var(--bg);
+        }
+        .role-option:hover { border-color: var(--brown-light); }
+        .role-option.selected { border-color: var(--brown); background: #fdf0e2; }
+        .role-option input { display: none; }
+        .role-icon { font-size: 22px; display: block; margin-bottom: 4px; }
+        .role-name { font-size: 12px; font-weight: 700; }
+    </style>
+</head>
+<body>
+
+<div class="login-container">
+    <!-- Logo -->
+    <div class="login-logo">
+        <span class="login-logo-icon">📖</span>
+        <div class="login-logo-name">Tiệm Truyện Cũ</div>
+        <div class="login-logo-sub">Quản lý cửa hàng</div>
+    </div>
+
+    <!-- Flash messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% for cat, msg in messages %}
+    <div class="flash {{ cat }}">{{ msg }}</div>
+    {% endfor %}
+    {% endwith %}
+
+    <!-- ═══ LOGIN ═══ -->
+    {% if page == "login" %}
+    <div class="login-card">
+        <div class="login-title">🔐 Đăng nhập</div>
+        <form method="post" action="{{ url_for('login') }}">
+            <div class="field">
+                <label class="field-label">Tên đăng nhập</label>
+                <input class="input" name="username" value="{{ username|default('') }}" placeholder="Nhập tên đăng nhập..." autofocus required>
+            </div>
+            <div class="field">
+                <label class="field-label">Mật khẩu</label>
+                <input class="input" name="password" type="password" placeholder="Nhập mật khẩu..." required>
+            </div>
+            <button type="submit" class="submit-btn">Đăng nhập →</button>
+        </form>
+        <div class="login-footer">
+            Chưa có tài khoản? <a href="{{ url_for('register') }}">Đăng ký ngay</a>
+        </div>
+    </div>
+
+    <!-- Hint -->
+    <div class="hint-box">
+        <div class="hint-title">🔑 Tài khoản mặc định</div>
+        <div class="hint-row"><span><strong>Admin:</strong> admin</span><span>Mật khẩu: <strong>admin123</strong></span></div>
+        <div class="hint-row"><span><strong>Nhân viên:</strong> nhanvien</span><span>Mật khẩu: <strong>nv123</strong></span></div>
+    </div>
+    {% endif %}
+
+    <!-- ═══ REGISTER ═══ -->
+    {% if page == "register" %}
+    <div class="login-card">
+        <div class="login-title">📝 Đăng ký tài khoản</div>
+        <form method="post" action="{{ url_for('register') }}">
+            <div class="field">
+                <label class="field-label">Họ tên</label>
+                <input class="input" name="fullname" value="{{ fullname|default('') }}" placeholder="Nguyễn Văn A" required>
+            </div>
+            <div class="field">
+                <label class="field-label">Tên đăng nhập (tối thiểu 3 ký tự)</label>
+                <input class="input" name="username" value="{{ username|default('') }}" placeholder="vd: nhanvien01" required minlength="3">
+            </div>
+            <div class="field">
+                <label class="field-label">Mật khẩu (tối thiểu 4 ký tự)</label>
+                <input class="input" name="password" type="password" placeholder="Nhập mật khẩu..." required minlength="4">
+            </div>
+            <div class="field">
+                <label class="field-label">Nhập lại mật khẩu</label>
+                <input class="input" name="password2" type="password" placeholder="Nhập lại mật khẩu..." required>
+            </div>
+
+            {% if is_admin %}
+            <div class="field">
+                <label class="field-label">Vai trò</label>
+                <div class="role-row">
+                    <label class="role-option selected" id="role-staff" onclick="selectRole('staff')">
+                        <input type="radio" name="role" value="staff" checked>
+                        <span class="role-icon">👤</span>
+                        <span class="role-name">Nhân viên</span>
+                    </label>
+                    <label class="role-option" id="role-admin" onclick="selectRole('admin')">
+                        <input type="radio" name="role" value="admin">
+                        <span class="role-icon">👑</span>
+                        <span class="role-name">Admin</span>
+                    </label>
+                </div>
+            </div>
+            {% endif %}
+
+            <button type="submit" class="submit-btn">Tạo tài khoản →</button>
+        </form>
+        <div class="login-footer">
+            Đã có tài khoản? <a href="{{ url_for('login') }}">Đăng nhập</a>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+<script>
+function selectRole(role) {
+    document.querySelectorAll('.role-option').forEach(el => el.classList.remove('selected'));
+    document.getElementById('role-' + role).classList.add('selected');
+    document.querySelector('input[value="' + role + '"]').checked = true;
+}
+</script>
+
+</body>
+</html>

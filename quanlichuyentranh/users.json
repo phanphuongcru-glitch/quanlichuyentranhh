@@ -1,0 +1,21 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9",
+      "fullname": "Quản trị viên",
+      "role": "admin",
+      "created": "01/01/2024"
+    },
+    {
+      "id": 2,
+      "username": "nhanvien",
+      "password": "70ae1c421727d20eb63385ae5763f2d798dc4c0bd66663bdf0f13e7512f5767f",
+      "fullname": "Nhân viên A",
+      "role": "staff",
+      "created": "01/01/2024"
+    }
+  ],
+  "next_id": 3
+}
